@@ -80,11 +80,6 @@ def get_sha256_hex(a):
     return hashlib.sha256(a.encode('utf8')).hexdigest()
 
 def get_psycopg2_env(conf):
-  dbname=conf['dbname']
-  user=conf['user']
-  host=conf['host']
-  password=conf['host']
-  #dsn =
   conn = psycopg2.connect(**conf)
   #conn = psycopg2.connect("dbname='river_erp7' user='jan' host='localhost' password='Jf3IBqP9'")
   cr = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
