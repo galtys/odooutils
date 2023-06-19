@@ -12,7 +12,7 @@ VERSION = '0.0.1'
 setup(
     name=NAME,
     version=VERSION,
-    py_modules=['py_common'],
+    py_modules=['py_common','pg2_schema'],
     description="Odoo Utils",
 
     author='Jan Troler',
