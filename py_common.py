@@ -1,6 +1,11 @@
 import sys
 import os
 import hashlib
+import psycopg2
+import psycopg2.extras
+import pprint
+import toml
+import sys
 
 sys.setrecursionlimit(10000)
 
@@ -74,3 +79,62 @@ def odoo14_browse(env, model, ids):
 def get_sha256_hex(a):
     return hashlib.sha256(a.encode('utf8')).hexdigest()
 
+def get_psycopg2_env(conf):
+  dbname=conf['dbname']
+  user=conf['user']
+  host=conf['host']
+  password=conf['host']
+  #dsn =
+  conn = psycopg2.connect(**conf)
+  #conn = psycopg2.connect("dbname='river_erp7' user='jan' host='localhost' password='Jf3IBqP9'")
+  cr = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+  return {'conn':conn, 'cr':cr}
+
+def get_data_type(cr, table):
+  dt_map = {}
+  cr.execute(sql_data_type, (table,) )
+  ret = cr.fetchall()
+  for x in ret:
+    dt_map[ x['column_name'] ] = x['data_type']
+  return dt_map
+def get_fkey(cr, table):
+  fk_map = {}
+  cr.execute(sql_fkey, (table,) )
+  ret = cr.fetchall()
+  for x in ret:
+    fk_map[ x['child_column'] ] = x['parent_table']
+  return fk_map
+  #return list(ret)
+
+def get_schema(dsn):
+   env = get_psycopg2_env(dsn)
+   cr = env['cr']
+   conn=env['conn']
+   is_null_map = {}
+   cr.execute(sql_is_null)
+   
+   ret = cr.fetchall()
+   for x in ret:
+       table = x['table_name']
+       column = x['column_name']
+       nullable = x['nullable']
+
+       #is_null_map[ (table, column) ] = nullable
+       v = is_null_map.setdefault( table , [] )
+       v.append( (column,nullable) )
+   #
+   schema_map = {}
+   for table, cols in is_null_map.items():
+       dt_map = get_data_type(cr, table)
+       fk_map = get_fkey(cr,table)
+       v=schema_map.setdefault(table, [])
+       for (c,isn) in cols:
+           val = {'column_name':c
+                  ,'nullable':isn
+                  ,'data_type':dt_map[c]
+                  ,'parent_table':fk_map.get(c)
+                  }
+           v.append(val)
+   #cr.commit()           
+   conn.close()
+   return schema_map
