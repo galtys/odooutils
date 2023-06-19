@@ -29,7 +29,9 @@ def import_openerp7_server(server_path, config_file):
           #import html_reports.controllers.main as r_main
           import galtyslib.openerplib as openerplib
           from openerp.osv import fields, osv
-          global openerplib          
+          global openerplib
+          global DEFAULT_SERVER_DATE_FORMAT
+          global DEFAULT_SERVER_DATETIME_FORMAT    
           return 1
    return 0 
         
