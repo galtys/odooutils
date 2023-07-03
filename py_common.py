@@ -31,7 +31,8 @@ def import_openerp7_server(server_path, config_file):
           from openerp.osv import fields, osv
           global openerplib
           global DEFAULT_SERVER_DATE_FORMAT
-          global DEFAULT_SERVER_DATETIME_FORMAT    
+          global DEFAULT_SERVER_DATETIME_FORMAT
+          global netsvc
           return 1
    return 0 
         
