@@ -55,7 +55,10 @@ def get_connection7(db):
     return {'pool':pool, 'cr':cr, 'uid':uid}
 #def split_sku(sku):
 #    sku.split('_')
-    
+def close_connection7(env7):
+   env7['cr'].commit()
+   env7['cr'].close()
+   
 def read_file_as_dict(pth):
     return eval(file(pth).read())
 def pretty_xml(s):
