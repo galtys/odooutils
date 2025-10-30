@@ -75,8 +75,8 @@
           buildInputs = [mypython pkgs.python27.pkgs.ipython pkgs24.wkhtmltopdf-bin];#  pkgs.wkhtmltopdf
           #shellHook = "export NIXPKGS_ALLOW_INSECURE=1";
         };
-        packages.x86_64-linux.openerp-server=migrated_pjb70;
-        packages.x86_64-linux.mypython=mypython;
+        packages.x86_64-linux.migrated_pjb70=migrated_pjb70;
+        packages.x86_64-linux.mypython27=mypython;
         packages.x86_64-linux.wkhtmltopdf-bin=pkgs24.wkhtmltopdf-bin;
         #wkhtml
         devShell=pkgs9.mkShell {
