@@ -424,12 +424,13 @@ let
       pname = "odooutils";
       version = "0.0.1";
 
-      src = pkgs.fetchFromGitHub {
-           rev = "423022ae9c6e8a761e9fa262ae110795d962364c";
-           owner = "galtys";
-           repo = "odooutils";
-           sha256 = "sha256-TrqIxwx6cGeQbuI6lOW2q68YqBDnFf/Ka3TG74InYc8=";
-      };
+      #src = pkgs.fetchFromGitHub {
+      #     rev = "423022ae9c6e8a761e9fa262ae110795d962364c";
+      #     owner = "galtys";
+      #     repo = "odooutils";
+      #     sha256 = "sha256-TrqIxwx6cGeQbuI6lOW2q68YqBDnFf/Ka3TG74InYc8=";
+      #};
+      src = ./.;
       #src = /home/jan/github.com/odooutils;
       doCheck = false;
       propagatedBuildInputs = [ my_psycopg2 pkgs.python27Packages.toml ]  ;
