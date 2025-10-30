@@ -583,39 +583,39 @@ let
       };
     };
 
-    my_bs4 = pkgs.python27.pkgs.buildPythonPackage rec {
-      pname = "beautifulsoup4";
-      version = "4.9.3";
+    # my_bs4 = pkgs.python27.pkgs.buildPythonPackage rec {
+    #   pname = "beautifulsoup4";
+    #   version = "4.9.3";
       
-      src = pkgs.python27.pkgs.fetchPypi {
-        inherit pname version;
-        #sha256 = "sha256-wMy6k8IGOTTOe176FKIQEeTlkwy/+rbQ0nKM+9caaaa=";
-        sha256 = "sha256-hHKeMirR1bTSX4Bb+gW5At2WRQ9DhCxOmQZ9XhNp6yU=";
-        #sha256 = "sha256-pIaFxY9Q/hJ3IkF7roP+a631ANVLVffjn/5Dt5hlOSU=";
-      };
+    #   src = pkgs.python27.pkgs.fetchPypi {
+    #     inherit pname version;
+    #     #sha256 = "sha256-wMy6k8IGOTTOe176FKIQEeTlkwy/+rbQ0nKM+9caaaa=";
+    #     sha256 = "sha256-hHKeMirR1bTSX4Bb+gW5At2WRQ9DhCxOmQZ9XhNp6yU=";
+    #     #sha256 = "sha256-pIaFxY9Q/hJ3IkF7roP+a631ANVLVffjn/5Dt5hlOSU=";
+    #   };
       
-      #src = pkgs.fetchFromGitHub {
-      #     rev = "69376fade070dbfdf89c57a0060bc290f7a744bb";
-      #     owner = "mdomke";
-      #     repo = "schwifty";
-      #     sha256 = "sha256-FnrIK6/4WuvF8Y8Lpo821ONsQpM9K/L2M0ppnc91Sq8=";
-      #};
+    #   #src = pkgs.fetchFromGitHub {
+    #   #     rev = "69376fade070dbfdf89c57a0060bc290f7a744bb";
+    #   #     owner = "mdomke";
+    #   #     repo = "schwifty";
+    #   #     sha256 = "sha256-FnrIK6/4WuvF8Y8Lpo821ONsQpM9K/L2M0ppnc91Sq8=";
+    #   #};
 
-      #python27.pkgs.six python27.pkgs.suds-jurko
-      checkInputs = [ pkgs.glibcLocales ];
-      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe pkgs.python27.pkgs.soupsieve];
-      #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
+    #   #python27.pkgs.six python27.pkgs.suds-jurko
+    #   checkInputs = [ pkgs.glibcLocales ];
+    #   #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
+    #   buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe pkgs.python27.pkgs.soupsieve];
+    #   #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
-      postPatch = ''
-      '';
-      doCheck = false;
-      #propagatedBuildInputs = [ pkgs.python27.pkgs.python-jose pkgs.python27.pkgs.requests ]  ;
-      meta = {
-        homepage = "jinja ";
-        description = "http://www.reportlab.com/; ";
-      };
-    };
+    #   postPatch = ''
+    #   '';
+    #   doCheck = false;
+    #   #propagatedBuildInputs = [ pkgs.python27.pkgs.python-jose pkgs.python27.pkgs.requests ]  ;
+    #   meta = {
+    #     homepage = "jinja ";
+    #     description = "http://www.reportlab.com/; ";
+    #   };
+    # };
     my_unidecode = pkgs.python27.pkgs.buildPythonPackage rec {
       pname = "unidecode";
       version = "1.0.23";
