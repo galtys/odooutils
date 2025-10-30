@@ -24,37 +24,7 @@ import copy
 from tabulate import tabulate
 #need fix: SO60846,
 import os
-def get_connection(dbname):
-    DB=dbname
-    obj_pool=openerp.pooler.get_pool(DB)
-    pool=openerp.sql_db.ConnectionPool()
-    cr = openerp.sql_db.Cursor(pool,DB)
-    uid=1
-    return obj_pool, cr, uid
-def import_openerp7_server(server_path, config_file):
-   #global server_path
-   #global config_file
-   if os.path.isdir(server_path):   
-          sys.path.append(server_path)
-          import openerp
-          import openerp.tools.config
-          import openerp.service.web_services
-          openerp.tools.config.parse_config(['--config=%s' % config_file])
-          from openerp import netsvc
-          from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
-          from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT    
-          #import html_reports.controllers.main as r_main
-          import galtyslib.openerplib as openerplib
-          from openerp.osv import fields, osv
-          global openerp
-          global openerplib
-          global DEFAULT_SERVER_DATE_FORMAT
-          global DEFAULT_SERVER_DATETIME_FORMAT
-          global netsvc
-          return 1
-   return 0 
 
-       
 if __name__ == '__main__':
     usage = "usage: python %prog [options] dbname csv_fn\n"
     #parser = optparse.OptionParser(version='0.1', usage=usage)
@@ -73,21 +43,12 @@ if __name__ == '__main__':
     dbname = erp7['database']
     server_path = erp7['server_path']
     config_file=erp7['config_file']
-    #ret=py_common.import_openerp7_server(server_path, config_file)
-    ret=import_openerp7_server(server_path, config_file)
-    #dbname='pjb_live-2025-07-31_1900'
-    #dbname='pjb_live-2025-08-07_1900'
-    #dbname='pjb_live-2025-08-11_1900'
-    #dbname='pjb_live-2025-08-10_1900'
-    #dbname='pjb_live-2025-08-08_1900'
-    #dbname='pjb_live-2025-08-08_1200'
-    #dbname='pjb_live-2025-08-08_0700'
-    print ret
-    print ('4connecting to: ', dbname)
-    #pool, cr, uid = openerplib.get_connection(dbname)
-    pool, cr, uid = get_connection(dbname)
-    from sale_order_history_and_corrections import order_tools
+    ret=py_common.import_openerp7_server(server_path, config_file)
+    pool, cr, uid = py_common.get_connection(dbname)
+    #pool, cr, uid = get_connection(dbname)
+    #from py_common.sale_order_history_and_corrections import order_tools
     import sale_order_history_and_corrections
+    from sale_order_history_and_corrections import order_tools
     from sale_order_history_and_corrections.order_tools_core27 import *
     import functools
     Y0=2025
