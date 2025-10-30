@@ -4,7 +4,10 @@ import sys
 import psycopg2
 from psycopg2 import Error
 #import csv_tools
+from galtyslib import py_common
+from galtyslib import openerplib
 from galtyslib import csv_tools
+
 import requests
 import json
 import pprint
@@ -16,9 +19,6 @@ import socket
 import toml
 #import StringIO
 import tempfile
-from galtyslib import py_common
-from galtyslib import openerplib
-
 import copy
 #create SO60605, SO60681, SO60961
 from tabulate import tabulate
@@ -37,8 +37,7 @@ if __name__ == '__main__':
     else:
         SHOW_STOCK=0
     dsn=dbx
-    site_arg = 'retail' #sys.argv[2] #retail
-    
+    site_arg = 'retail' #sys.argv[2] #retail    
     erp7=conf['erp7'][dbx]
     dbname = erp7['database']
     server_path = erp7['server_path']

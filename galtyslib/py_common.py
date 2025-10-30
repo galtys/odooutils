@@ -58,8 +58,8 @@ def import_openerp7_server(server_path, config_file):
 
 
 def get_connection7(db):
-    pool, cr, uid = openerplib.get_connection(db)
-
+    #pool, cr, uid = openerplib.get_connection(db)
+    pool, cr, uid = get_connection(db)
     return {'pool':pool, 'cr':cr, 'uid':uid}
 #def split_sku(sku):
 #    sku.split('_')
