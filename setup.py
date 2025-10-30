@@ -12,7 +12,8 @@ VERSION = '0.0.1'
 setup(
     name=NAME,
     version=VERSION,
-    py_modules=['py_common','pg2_schema','galtyslib'],
+    #py_modules=['py_common','pg2_schema'], #'galtyslib'
+    packages=find_packages(),
     description="Odoo Utils",
 
     author='Jan Troler',
