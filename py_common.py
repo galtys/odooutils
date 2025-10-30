@@ -31,7 +31,8 @@ def import_openerp7_server(server_path, config_file):
           from openerp.osv import fields, osv
           global openerplib
           global DEFAULT_SERVER_DATE_FORMAT
-          global DEFAULT_SERVER_DATETIME_FORMAT    
+          global DEFAULT_SERVER_DATETIME_FORMAT
+          global netsvc
           return 1
    return 0 
         
@@ -54,7 +55,10 @@ def get_connection7(db):
     return {'pool':pool, 'cr':cr, 'uid':uid}
 #def split_sku(sku):
 #    sku.split('_')
-    
+def close_connection7(env7):
+   env7['cr'].commit()
+   env7['cr'].close()
+   
 def read_file_as_dict(pth):
     return eval(file(pth).read())
 def pretty_xml(s):
@@ -81,3 +85,32 @@ def odoo14_browse(env, model, ids):
 def get_sha256_hex(a):
     return hashlib.sha256(a.encode('utf8')).hexdigest()
 
+def browse7(env, res, res_ids):
+    pool = env['erp7']['pool']
+    cr = env['erp7']['cr']
+    uid = env['erp7']['uid']
+    return pool.get(res).browse(cr,uid,res_ids)
+def write7(env, res, res_ids, val):
+    pool = env['erp7']['pool']
+    cr = env['erp7']['cr']
+    uid = env['erp7']['uid']
+    return pool.get(res).write(cr,uid,res_ids,val)
+def search7(env,res, args):
+    pool = env['erp7']['pool']
+    cr = env['erp7']['cr']
+    uid = env['erp7']['uid']
+    return pool.get(res).search(cr,uid,args)
+def unlink7(env,res, res_ids):
+    pool = env['erp7']['pool']
+    cr = env['erp7']['cr']
+    uid = env['erp7']['uid']
+    return pool.get(res).unlink(cr,uid,res_ids)
+   
+def pool7(env,res):
+   return env['erp7']['pool'].get(res)
+def cr7(env):
+   return env['erp7']['cr']
+def cr7(env):
+   return env['erp7']['uid']
+def env_tuple(env):
+   return (env['erp7']['pool'], env['erp7']['cr'], env['erp7']['uid'])
