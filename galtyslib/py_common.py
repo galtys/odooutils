@@ -13,6 +13,13 @@ sys.setrecursionlimit(10000)
 
 #server_path=None
 #config_file=None
+def get_connection(dbname):
+    DB=dbname
+    obj_pool=openerp.pooler.get_pool(DB)
+    pool=openerp.sql_db.ConnectionPool()
+    cr = openerp.sql_db.Cursor(pool,DB)
+    uid=1
+    return obj_pool, cr, uid
 
 def import_openerp7_server(server_path, config_file):
    #global server_path

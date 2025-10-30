@@ -78,13 +78,13 @@ def install_modules(obj_pool, cr, uid,  modules):
     ret=  mod_upgrade_obj.upgrade_module(cr, uid, ids)
     return ret
 
-def get_connection(dbname):
-    DB=dbname
-    obj_pool=openerp.pooler.get_pool(DB)
-    pool=openerp.sql_db.ConnectionPool()
-    cr = openerp.sql_db.Cursor(pool,DB)
-    uid=1
-    return obj_pool, cr, uid
+#def get_connection(dbname):
+#    DB=dbname
+#    obj_pool=openerp.pooler.get_pool(DB)
+#    pool=openerp.sql_db.ConnectionPool()
+#    cr = openerp.sql_db.Cursor(pool,DB)
+#    uid=1
+#    return obj_pool, cr, uid
 
 def pickle_fn(dbname):
     return '%s.pickle'%dbname
