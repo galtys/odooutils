@@ -424,13 +424,12 @@ let
       pname = "odooutils";
       version = "0.0.1";
 
-      #src = pkgs.fetchFromGitHub {
-      #     rev = "423022ae9c6e8a761e9fa262ae110795d962364c";
-      #     owner = "galtys";
-      #     repo = "odooutils";
-      #     sha256 = "sha256-TrqIxwx6cGeQbuI6lOW2q68YqBDnFf/Ka3TG74InYc8=";
-      #};
-      src=./.;
+      src = pkgs.fetchFromGitHub {
+           rev = "423022ae9c6e8a761e9fa262ae110795d962364c";
+           owner = "galtys";
+           repo = "odooutils";
+           sha256 = "sha256-TrqIxwx6cGeQbuI6lOW2q68YqBDnFf/Ka3TG74InYc8=";
+      };
       #src = /home/jan/github.com/odooutils;
       doCheck = false;
       propagatedBuildInputs = [ my_psycopg2 pkgs.python27Packages.toml ]  ;
@@ -702,11 +701,11 @@ let
      )
    ];
    
-   #++(my-api-client pkgs27)
+   #++(my-api-client pkgs27) #my_bs4
    #my_requests_oauthlib
     pkgs27=pkgs.python27Packages;
     #my_schwifty
-    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio my_bs4 chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
+    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
     
 
   mypython = pkgs.python27.buildEnv.override {
