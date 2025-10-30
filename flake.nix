@@ -1,6 +1,6 @@
 {
-  inputs.nixpkgs2009.url = github:galtys/nixpkgs/nixos-20.03;
-  inputs.nixpkgs24.url = "github:galtys/nixpkgs/nixos-24.05";
+  inputs.nixpkgs2009.url =github:nixos/nixpkgs/nixos-20.03;
+  inputs.nixpkgs24.url = github:galtys/nixpkgs/nixos-24.05;
   #inputs.flake-utils.url = github:numtide/flake-utils;
   #nix run .#openerp-server -- -c /home/jan/projects/server_pjbrefct.conf
   outputs = { self, nixpkgs2009, nixpkgs24 }: 
@@ -20,7 +20,7 @@
       #wkhtml = pkgs9.callPackage ./wk/package2.nix {};
       #wkpdf = pkgs9.callPackage ./pdf_wk/package.nix {};      
       #wkpdf = pkgs24.callPackage ./pdf_wk/package.nix {};
-      my_py_packages=((import ./migrated_pjb70_nixos2009_for_flake.nix) {pkgs =pkgs9;});
+      my_py_packages=((import ./for_flake.nix) {pkgs =pkgs9;});
       #nixpkgs.overlays=[(final: prev: {
       #  python27 = prev.python27.override {
       #    extraPkgs = my_py_packages;
