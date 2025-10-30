@@ -21,7 +21,7 @@ setup(
     license='MIT',
     keywords='utils',
     url='http://github.com/galtys/odooutils',
-    download_url='https://github.com/fmoo/python-varint/%s.tar.gz' % VERSION,
+    download_url='https://github.com/galtys/odooutils/%s.tar.gz' % VERSION,
     classifiers=[
         "Development Status :: 0 - Development/Unstable",
         "Topic :: Utilities",
