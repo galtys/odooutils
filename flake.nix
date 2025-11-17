@@ -72,7 +72,7 @@
         stdenv.mkDerivation rec {
           name = "migrated_pjb70_env";
           src = self;
-          buildInputs = [mypython pkgs.python27.pkgs.ipython pkgs24.wkhtmltopdf-bin];#  pkgs.wkhtmltopdf
+          buildInputs = [mypython pkgs.python27.pkgs.ipython pkgs24.wkhtmltopdf-bin pkgs.ghostscript];#  pkgs.wkhtmltopdf
           #shellHook = "export NIXPKGS_ALLOW_INSECURE=1";
         };
         packages.x86_64-linux.migrated_pjb70=migrated_pjb70;
