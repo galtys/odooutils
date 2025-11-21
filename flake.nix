@@ -1,5 +1,5 @@
 {
-  inputs.nixpkgs2009.url =github:nixos/nixpkgs/nixos-20.03;
+  inputs.nixpkgs2009.url =github:galtys/nixpkgs/nixos-20.03pillow;
   inputs.nixpkgs24.url = github:galtys/nixpkgs/nixos-24.05;
   #inputs.flake-utils.url = github:numtide/flake-utils;
   #nix run .#openerp-server -- -c /home/jan/projects/server_pjbrefct.conf
