@@ -707,7 +707,7 @@ let
    #my_requests_oauthlib
     pkgs27=pkgs.python27Packages;
     #my_schwifty
-    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
+    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib my_pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
     
 
   mypython = pkgs.python27.buildEnv.override {
