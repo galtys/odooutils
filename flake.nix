@@ -32,7 +32,7 @@
         #buildInputs=my_py_packages;
         extraLibs =   my_py_packages;
         #extraInputs = my_py_packages;
-        ignoreCollisions = true;
+        #ignoreCollisions = true;
       };
 
       migrated_pjb70 = pkgs9.python27.pkgs.buildPythonPackage rec {

@@ -348,8 +348,8 @@ let
 
 
 
-
-   my_pillow = pkgs.python27.pkgs.buildPythonPackage rec {
+   my_pillow = pkgs.python27.pkgs.pillow;
+   my_pillowDDDX = pkgs.python27.pkgs.buildPythonPackage rec {
      pname = "Pillow";
      version = "5.4.1";
 
@@ -484,8 +484,8 @@ let
       };
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
-      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata];
+      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ]; pkgs.python27.pkgs.pillow
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -512,7 +512,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -540,7 +540,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -572,7 +572,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe pkgs.python27.pkgs.pbr];
+      buildInputs = [ my_pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe pkgs.python27.pkgs.pbr];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -638,7 +638,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      buildInputs = [ my_pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
