@@ -452,8 +452,8 @@ let
       };
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
-      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow ];
+      buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
+      #buildInputs = [ pkgs.python27.pkgs.pillow ];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
