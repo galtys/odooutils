@@ -348,8 +348,8 @@ let
 
 
 
-   #my_pillow = pkgs.python27.pkgs.pillow;
-   my_pillow = pkgs.python27.pkgs.buildPythonPackage rec {
+   my_pillow = pkgs.python27.pkgs.pillow;
+   my_pillowXXXX = pkgs.python27.pkgs.buildPythonPackage rec {
      pname = "Pillow";
      version = "5.4.1";
 
@@ -712,7 +712,7 @@ let
    my_py_packages3=with pkgs.python27Packages; [my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch]; #before v8
 
   mypython = pkgs.python27.buildEnv.override {
-     extraLibs =  my_py_packages3;  
+     extraLibs =  my_py_packages2;  
      ignoreCollisions = true;
   };
 
@@ -723,7 +723,7 @@ let
 
 in
   #mypython
-  my_py_packages3
+  my_py_packages2
 #pkgs.stdenv.mkDerivation rec {
 #  name = "migrated_pjb70_env";
 #  #phases = [ "installPhase" "fixupPhase" ];
