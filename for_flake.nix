@@ -348,8 +348,8 @@ let
 
 
 
-
-   my_pillow = pkgs.python27.pkgs.buildPythonPackage rec {
+   my_pillow = pkgs.python27.pkgs.pillow;
+   my_pillowXXXX = pkgs.python27.pkgs.buildPythonPackage rec {
      pname = "Pillow";
      version = "5.4.1";
 
@@ -452,8 +452,8 @@ let
       };
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
-      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow ];
+      buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
+      #buildInputs = [ pkgs.python27.pkgs.pillow ];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -484,8 +484,8 @@ let
       };
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
-      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata];
+      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ]; pkgs.python27.pkgs.pillow
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -512,7 +512,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -540,7 +540,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -572,7 +572,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe pkgs.python27.pkgs.pbr];
+      buildInputs = [ my_pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe pkgs.python27.pkgs.pbr];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -638,7 +638,7 @@ let
       #python27.pkgs.six python27.pkgs.suds-jurko
       checkInputs = [ pkgs.glibcLocales ];
       #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
-      buildInputs = [ pkgs.python27.pkgs.pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      buildInputs = [ my_pillow pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
       #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
 
       postPatch = ''
@@ -707,8 +707,9 @@ let
    #my_requests_oauthlib
     pkgs27=pkgs.python27Packages;
     #my_schwifty
-    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
+    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib my_pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
     
+   my_py_packages3=with pkgs.python27Packages; [my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch]; #before v8
 
   mypython = pkgs.python27.buildEnv.override {
      extraLibs =  my_py_packages2;  
