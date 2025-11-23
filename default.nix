@@ -41,6 +41,15 @@ in {
 
 
   config = lib.mkIf mainCFG.enable {
+    users.users.odoo = {    
+      isNormalUser = true;       
+      home = "/opt/odoo";               
+      description = "odoo";           
+      extraGroups = [ "wheel" "dialout" "adbusers"]; # Enable ‘sudo’ for the user. 
+      #uid = 1000; 
+      openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGjW8vyQRsdU5yRF1Q/5CrIvxu7ga3pwGUSRd4unsZI5AQnrHvD+yjKu25Ug6ZcZtsvHM8FzgDaW26jRZ6CJ7Q/4IldnxBxDU6epFruoxegv6E/oNiAwGaj8xwdZ/g8+g5aHRbRN0PJeBQgBTKOHCZcv9DO1/dsz+eLPu1QfePsurLHWc9sI7v/iJtUPS3Lghwm/k5oYN2jDazeGcNMY0ZfGUThA2Adxx+PDgxcZ9b+zcy60nVFZwXbbWd4NUcZzBSF6WmrLVWzbcaxDTNx+qgm9vmQdqIJYB5bfeIobPsNzMA8IhzsJxwwbPZ4KcHvWdU4LqMrBXU4owiGuqkdSf jan@galtys" ]; 
+    };
+
     systemd.services.migrated_pjb70  = {
       wantedBy = [ "multi-user.target" ];
       preStart =
@@ -57,7 +66,7 @@ in {
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/pjbrefct.pid";
           ExecStart = "${migrated_pjb70}/bin/openerp-server -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid";};
-   };
+    };
     
   };
 
