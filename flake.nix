@@ -46,7 +46,7 @@
       #   	 sha256 = "0298ll1y3ya631mjnkb0msdq9h0av85qi9l1h59r26sn4a32rp6b";
       #  };
         
-      };
+      #};
       migrated_pjb70 = pkgs9.python27.pkgs.buildPythonPackage rec {
         pname = "openerp-server";
         version = "1.1.1";
