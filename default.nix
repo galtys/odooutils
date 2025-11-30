@@ -18,7 +18,7 @@ in {
     
     config_file = mkOption {
       type = types.path;
-      default = ${pjb_keyring}/server_pjbrefct.conf; 
+      default = "${pjb_keyring}/server_pjbrefct.conf"; 
       #default = "/home/jan/projects/server_pjbrefct.conf";
     };
 
