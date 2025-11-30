@@ -6,7 +6,7 @@ let
   #migrated_pjb70=inputs.pjb70.packages.x86_64-linux.openerp-server;
   migrated_pjb70=inputs.pjb70.packages.x86_64-linux.migrated_pjb70;
   pj_bridgman_addons=inputs.pj_bridgman.packages.x86_64-linux.default;
-  migrated_pjb70_addons=inputs.migrated_pjb70_addons.x86_64-linux.default;
+  migrated_pjb70_addons=inputs.migrated_pjb70_addons.packages.x86_64-linux.default;
   #migrated_pjb70 = import /home/jan/projects/migrated_pjb70.nix {};
   
  
