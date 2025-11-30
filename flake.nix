@@ -34,18 +34,30 @@
         #extraInputs = my_py_packages;
         ignoreCollisions = true;
       };
-
+      
+      pj_bridgman_addons = pkgs9.python27.pkgs.buildPythonPackage rec {
+        pname = "pj_bridgman";
+        version = "0.0.2";
+        # nix-prefetch-git --url git@github.com:/galtys/pj_bridgman.git --rev 1c597249d49a607763871662753765478af1ecd7
+        src = pkgs9.fetchFromGitHub {
+            rev = "1c597249d49a607763871662753765478af1ecd7";
+            owner = "galtys";
+            repo = "pj_bridgman";
+         	 sha256 = "0298ll1y3ya631mjnkb0msdq9h0av85qi9l1h59r26sn4a32rp6b";
+        };
+        
+      };
       migrated_pjb70 = pkgs9.python27.pkgs.buildPythonPackage rec {
         pname = "openerp-server";
         version = "1.1.1";
-        #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev 0720a82520e41dd662ca9d517b018575516b10bb
-        #src = pkgs9.fetchFromGitHub {
-        #    rev = "a213f1a3744e598f78d952d2951a3235179ce926";
-        #    owner = "galtys";
-        #    repo = "odoo";
-        # 	 sha256 = "0gsbfz8mwiy06zydi1fkwn4kiffkfhd18j5qmhz8dqlsy8d8jmy0";
-        #};
-        src = /home/jan/github.com/migrated_pjb70;
+        #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev c285b25954eac9e85e4fbdd35d916fd7b36ff925
+        src = pkgs9.fetchFromGitHub {
+            rev = "c285b25954eac9e85e4fbdd35d916fd7b36ff925";
+            owner = "galtys";
+            repo = "odoo";
+         	 sha256 = "1fsflsp1kd9k0k764agb503hb09nravf58cbk7wxnnii8zg8xsfd";
+        };
+        #src = /home/jan/github.com/migrated_pjb70;
         #postPatch = ''
         #  # don't test bash builtins
         #  rm testing/test_argcomplete.py
@@ -76,6 +88,8 @@
           #shellHook = "export NIXPKGS_ALLOW_INSECURE=1";
         };
         packages.x86_64-linux.migrated_pjb70=migrated_pjb70;
+        packages.x86_64-linux.pj_bridgman_addons=pj_bridgman_addons;
+        
         packages.x86_64-linux.mypython27=mypython;
         packages.x86_64-linux.wkhtmltopdf-bin=pkgs24.wkhtmltopdf-bin;
         #wkhtml

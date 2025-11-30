@@ -5,6 +5,7 @@ let
   mainCFG = config.pjb70_server;
   #migrated_pjb70=inputs.pjb70.packages.x86_64-linux.openerp-server;
   migrated_pjb70=inputs.pjb70.packages.x86_64-linux.migrated_pjb70;
+  pj_bridgman_addons=inputs.pjb70.packages.x86_64-linux.pj_bridgman_addons;
   #migrated_pjb70 = import /home/jan/projects/migrated_pjb70.nix {};
   
  
@@ -43,7 +44,7 @@ in {
   config = lib.mkIf mainCFG.enable {
     users.users.odoo = {    
       isNormalUser = true;       
-      home = "/opt/odoo";               
+      home = "/home/odoo";               
       description = "odoo";           
       extraGroups = [ "wheel" "dialout" "adbusers"]; # Enable ‘sudo’ for the user. 
       #uid = 1000; 
@@ -65,7 +66,7 @@ in {
           RestartSec = 3;
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/pjbrefct.pid";
-          ExecStart = "${migrated_pjb70}/bin/openerp-server -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid";};
+          ExecStart = "${migrated_pjb70}/bin/openerp-server -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid  --addons-path=${migrated_pjb70}/bin/addons,${pj_bridgman_addons}/bin";};
     };
     
   };
