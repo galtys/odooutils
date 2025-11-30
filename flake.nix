@@ -91,7 +91,7 @@
         #packages.x86_64-linux.pj_bridgman_addons=pj_bridgman_addons;
         
         packages.x86_64-linux.mypython27=mypython;
-        packages.x86_64-linux.my_py_packages=my_py_packages;
+        #packages.x86_64-linux.my_py_packages=my_py_packages;
         packages.x86_64-linux.wkhtmltopdf-bin=pkgs24.wkhtmltopdf-bin;
         #wkhtml
         devShell=pkgs9.mkShell {

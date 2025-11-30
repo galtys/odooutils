@@ -8,7 +8,8 @@ let
   pj_bridgman_addons=inputs.pj_bridgman.packages.x86_64-linux.default;
   migrated_pjb70_addons=inputs.migrated_pjb70_addons.packages.x86_64-linux.default;
   mvect2_transactical_addons=inputs.mvect2_transactical_addons.packages.x86_64-linux.transactical-addons;
-  pjb_keyring=inputs.pjb_keyring.packages.x86_64-linux.default;  
+  pjb_keyring=inputs.pjb_keyring.packages.x86_64-linux.default;
+  run_in_loop=inputs.run_in_loop.packages.x86_64-linux.default;
   #migrated_pjb70 = import /home/jan/projects/migrated_pjb70.nix {};
   
  
@@ -72,6 +73,26 @@ in {
           PIDFile = "${mainCFG.stateDir}/pjbrefct.pid";
           ExecStart = "${migrated_pjb70}/bin/openerp-server --addons-path=${migrated_pjb70_addons}/addons,${pj_bridgman_addons}/addons,${mvect2_transactical_addons}/addons -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid";};
     };
+
+    systemd.services.run_in_loop2  = {
+      wantedBy = [ "multi-user.target" ];
+      #preStart =
+      #      ''
+      #        mkdir -m 0750 -p ${mainCFG.stateDir}
+      #        #chown jan:${mainCFG.group} ${mainCFG.stateDir}
+      #        #[ $(id -u) != 0 ] || chown root.${mainCFG.group} ${mainCFG.stateDir}
+      #      '';
+      
+      serviceConfig = {
+        User = mainCFG.user;
+          Restart = lib.mkForce "always";
+          RestartSec = 30;
+          Group = mainCFG.group;
+          PIDFile = "${mainCFG.stateDir}/run_in_loop.pid";
+          ExecStart = "${run_in_loop}/bin/run_in_loop2.py";};
+    };
+
+
     
   };
 
