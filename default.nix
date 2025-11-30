@@ -8,7 +8,7 @@ let
   pj_bridgman_addons=inputs.pj_bridgman.packages.x86_64-linux.default;
   migrated_pjb70_addons=inputs.migrated_pjb70_addons.packages.x86_64-linux.default;
   mvect2_transactical_addons=inputs.mvect2_transactical_addons.packages.x86_64-linux.transactical-addons;
-  pjb_keyring=inputs.pjb_keyring.packages.default;  
+  pjb_keyring=inputs.pjb_keyring.packages.x86_64-linux.default;  
   #migrated_pjb70 = import /home/jan/projects/migrated_pjb70.nix {};
   
  
