@@ -66,7 +66,7 @@ in {
           RestartSec = 3;
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/pjbrefct.pid";
-          ExecStart = "${migrated_pjb70}/bin/openerp-server --addons-path=${migrated_pjb70}/bin/addons,${pj_bridgman_addons}/bin"; -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid};
+          ExecStart = "${migrated_pjb70}/bin/openerp-server --addons-path=${migrated_pjb70}/bin/addons,${pj_bridgman_addons}/bin -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid";};
     };
     
   };
