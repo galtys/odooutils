@@ -89,7 +89,7 @@ in {
           RestartSec = 30;
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/run_in_loop.pid";
-          ExecStart = "${run_in_loop}/lib/python2.7/site-packages/run_in_loop_lib/run_in_loop2.py";};
+          ExecStart = "${run_in_loop}/bin/run_in_loop2.py";};
     };
 
 
