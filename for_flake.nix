@@ -430,9 +430,9 @@ let
       #     repo = "odooutils";
       #     sha256 = "sha256-TrqIxwx6cGeQbuI6lOW2q68YqBDnFf/Ka3TG74InYc8=";
       #};
-      #src = ./.;
+      src = ./.;
       
-      src = /home/jan/github.com/odooutils;
+      #src = /home/jan/github.com/odooutils;
       doCheck = false;
       propagatedBuildInputs = [ my_psycopg2 pkgs.python27Packages.toml ]  ;
       meta = {
