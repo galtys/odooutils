@@ -16,6 +16,7 @@ let
 in {
   options.pjb70_server = {
     enable = mkEnableOption "nixos-pjb70_server";
+    run_in_loop_enable = mkEnableOption "run_in_loop";
     
     config_file = mkOption {
       type = types.path;
@@ -73,16 +74,10 @@ in {
           PIDFile = "${mainCFG.stateDir}/pjbrefct.pid";
           ExecStart = "${migrated_pjb70}/bin/openerp-server --addons-path=${migrated_pjb70_addons}/addons,${pj_bridgman_addons}/addons,${mvect2_transactical_addons}/addons -c ${mainCFG.config_file}  --pidfile=${mainCFG.stateDir}/pjbrefct.pid";};
     };
-
-    systemd.services.run_in_loop2  = {
+    
+     
+    systemd.services.run_in_loop2  = lib.mkIf mainCFG.run_in_loop_enable {
       wantedBy = [ "multi-user.target" ];
-      #preStart =
-      #      ''
-      #        mkdir -m 0750 -p ${mainCFG.stateDir}
-      #        #chown jan:${mainCFG.group} ${mainCFG.stateDir}
-      #        #[ $(id -u) != 0 ] || chown root.${mainCFG.group} ${mainCFG.stateDir}
-      #      '';
-      
       serviceConfig = {
           User = mainCFG.user;
           Restart = lib.mkForce "always";
@@ -90,8 +85,8 @@ in {
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/run_in_loop.pid";
           ExecStart = "${run_in_loop}/bin/run_in_loop2.py --pwd=${run_in_loop}/bin --period=1";};
-    };
-
+     };
+    
 
     
   };
