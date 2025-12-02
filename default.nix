@@ -16,7 +16,7 @@ let
 in {
   options.pjb70_server = {
     enable = mkEnableOption "nixos-pjb70_server";
-    run_in_loop_enable = mkEnableOption "run_in_loop";
+    run_in_loop = mkEnableOption "run_in_loop";
     #run_in_loop_enable.default = false;
     
     config_file = mkOption {
@@ -77,7 +77,7 @@ in {
     };
     
      
-    systemd.services.run_in_loop2  = lib.mkIf mainCFG.run_in_loop_enable {
+    systemd.services.run_in_loop2  = lib.mkIf mainCFG.run_in_loop {
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
           User = mainCFG.user;
