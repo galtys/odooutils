@@ -17,6 +17,7 @@ in {
   options.pjb70_server = {
     enable = mkEnableOption "nixos-pjb70_server";
     run_in_loop_enable = mkEnableOption "run_in_loop";
+    run_in_loop_enable.default = false;
     
     config_file = mkOption {
       type = types.path;
