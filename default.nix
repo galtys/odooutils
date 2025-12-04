@@ -62,7 +62,7 @@ in {
       wantedBy = [ "multi-user.target" ];
       preStart =
             ''
-              mkdir -m 0750 ${mainCFG.stateDir}
+              mkdir -p -m 0750 ${mainCFG.stateDir}
               #chown jan:${mainCFG.group} ${mainCFG.stateDir}
               #[ $(id -u) != 0 ] || chown root.${mainCFG.group} ${mainCFG.stateDir}
             '';
