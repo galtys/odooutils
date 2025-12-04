@@ -85,7 +85,7 @@ in {
           RestartSec = 30;
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/run_in_loop.pid";
-          ExecStart = "${run_in_loop}/scripts-2.7/run_in_loop2.py --pwd=${mainCFG.stateDir} --period=1";};
+          ExecStart = "${migrated_pjb70}/bin/run_in_loop2.py --pwd=${mainCFG.stateDir} --period=1";};
      };
     
 
