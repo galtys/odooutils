@@ -43,7 +43,14 @@ in {
         default = "jan";
         description = ''
         '';
+    };
+    dbx = mkOption {
+        type = types.str;
+        default = "dev7";
+        description = ''
+        '';
       };
+    
   };
 
 
@@ -85,7 +92,7 @@ in {
           RestartSec = 30;
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/run_in_loop.pid";
-          ExecStart = "${run_in_loop}/bin/run_in_loop2.py --pwd=${mainCFG.stateDir} --period=1";};
+          ExecStart = "${run_in_loop}/bin/run_in_loop2.py --pwd=${mainCFG.stateDir} --period=1 -c ${pjb_keyring}/pjb.toml ${mainCFG.dbx} ";};
      };
     
 
