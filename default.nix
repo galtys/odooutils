@@ -62,7 +62,7 @@ in {
       wantedBy = [ "multi-user.target" ];
       preStart =
             ''
-              sudo mkdir -m 0750 -p ${mainCFG.stateDir}
+              mkdir -m 0750 -p ${mainCFG.stateDir}
               #chown jan:${mainCFG.group} ${mainCFG.stateDir}
               #[ $(id -u) != 0 ] || chown root.${mainCFG.group} ${mainCFG.stateDir}
             '';
