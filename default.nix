@@ -27,7 +27,7 @@ in {
 
     stateDir = mkOption {
         type = types.path;
-        default = "/var/lib/erp7";
+        default = "/home/jan/erp7";
         description = ''
         '';
     };
