@@ -52,12 +52,12 @@
         version = "1.1.1";
         #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev c285b25954eac9e85e4fbdd35d916fd7b36ff925
         src = pkgs9.fetchFromGitHub {
-            #rev = "c285b25954eac9e85e4fbdd35d916fd7b36ff925";
-            ref= "506fb6943205d7debc51b282d1412e6587bbeafd";
+            rev = "c285b25954eac9e85e4fbdd35d916fd7b36ff925";
+            #ref= "506fb6943205d7debc51b282d1412e6587bbeafd";
             owner = "galtys";
             repo = "odoo";
-         	  #sha256 = "1fsflsp1kd9k0k764agb503hb09nravf58cbk7wxnnii8zg8xsfd";
-            sha256 = "0zhbk10swl6254qig5s70yjqf960h9inr0za3870s6xnilbc0k57";
+         	  sha256 = "1fsflsp1kd9k0k764agb503hb09nravf58cbk7wxnnii8zg8xsfd";
+            #sha256 = "0zhbk10swl6254qig5s70yjqf960h9inr0za3870s6xnilbc0k57";
         };
         #src = /home/jan/github.com/migrated_pjb70;
         #postPatch = ''
