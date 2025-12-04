@@ -50,6 +50,12 @@ in {
         description = ''
         '';
       };
+    period = mkOption {
+        type = types.str;
+        default = "1";
+        description = ''base period [hrs]
+        '';
+      };
     
   };
 
@@ -92,7 +98,7 @@ in {
           RestartSec = 30;
           Group = mainCFG.group;
           PIDFile = "${mainCFG.stateDir}/run_in_loop.pid";
-          ExecStart = "${run_in_loop}/bin/run_in_loop2.py --pwd=${mainCFG.stateDir} --period=1 -c ${pjb_keyring}/pjb.toml --scripts-dir ${run_in_loop}/bin ${mainCFG.dbx} ";};
+          ExecStart = "${run_in_loop}/bin/run_in_loop2.py --pwd=${mainCFG.stateDir} --period=${mainCFG.period} --config-toml=${pjb_keyring}/pjb.toml --scripts-dir=${run_in_loop}/bin ${mainCFG.dbx} ";};
      };
     
 
