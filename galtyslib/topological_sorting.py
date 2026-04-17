@@ -18,7 +18,7 @@ def topological_sorting(dep):
     marked=[]
     temporary=[]
     L=[]
-    print ('tp started')
+    #print ('tp started')
     def visit(dep, n):
         if n in temporary:
             raise ValueError(n, temporary, marked)
