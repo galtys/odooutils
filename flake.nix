@@ -21,6 +21,7 @@
       #wkpdf = pkgs9.callPackage ./pdf_wk/package.nix {};      
       #wkpdf = pkgs24.callPackage ./pdf_wk/package.nix {};
       my_py_packages=((import ./for_flake.nix) {pkgs =pkgs9;});
+      my_python312=((import ./for_flake312.nix) {pkgs =pkgs24;});
       #nixpkgs.overlays=[(final: prev: {
       #  python27 = prev.python27.override {
       #    extraPkgs = my_py_packages;
@@ -93,11 +94,12 @@
         #packages.x86_64-linux.pj_bridgman_addons=pj_bridgman_addons;
         
         packages.x86_64-linux.mypython27=mypython;
+        packages.x86_64-linux.mypython312=my_python312;
         #packages.x86_64-linux.my_py_packages=my_py_packages;
         packages.x86_64-linux.wkhtmltopdf-bin=pkgs24.wkhtmltopdf-bin;
         #wkhtml
         devShell=pkgs9.mkShell {
-            buildInputs = [mypython  pkgs9.python27.pkgs.ipython];# 
+            buildInputs = [mypython pkgs9.python27.pkgs.ipython];# 
             inputsFrom = builtins.attrValues self.packages.x86_64-linux;
             shellHook = "export NIXPKGS_ALLOW_INSECURE=1";
         };
