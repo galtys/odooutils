@@ -552,6 +552,37 @@ let
         description = "http://www.reportlab.com/; ";
       };
     };
+    my_pypdf2 = pkgs.python27.pkgs.buildPythonPackage rec {
+      pname = "PyPDF2";
+      version = "1.27.10";
+      #src = pkgs.python27.pkgs.fetchPypi {
+      #  inherit pname version;
+      #  sha256 = "sha256-p0QI9pumJx9xuTUu9O0D3FOjGqQE0ptdMfU7/s/uFEA=";
+      #};
+      src = pkgs.fetchFromGitHub {
+           rev = "def7a629ad4e1341dfdd68f6c7f56c111f1ee5c6";
+           owner = "py-pdf";
+           repo = "pypdf";
+           #sha256 = "sha256-TrqIxwx6cGeQbuI6lOW2q68YqBDnFf/Ka3TG74Iaaaa=";
+           sha256 = "sha256-G2pkoWEoBqGXY+rPSekVf8iBcX85gih3YWcwV+92Uh4=";
+           #sha256 = "sha256-FnrIK6/4WuvF8Y8Lpo821ONsQpM9K/L2M0ppnc91Sq8=";           
+      };
+
+      #python27.pkgs.six python27.pkgs.suds-jurko
+      checkInputs = [ pkgs.glibcLocales ];
+      #buildInputs = [ my_pillow ]; #pkgs.python27.pkgs.pillow ];
+      buildInputs = [ my_pillow  pkgs.python27.pkgs.lxml pkgs.python27.pkgs.cssselect pkgs.python27.pkgs.importlib-metadata pkgs.python27.pkgs.markupsafe];
+      #buildInputs = [ pkgs.python27.pkgs.ft pkgs.python27.pkgs.pillow ];
+
+      postPatch = ''
+      '';
+      doCheck = false;
+      #propagatedBuildInputs = [ pkgs.python27.pkgs.python-jose pkgs.python27.pkgs.requests ]  ;
+      meta = {
+        homepage = "pypdf";
+        description = "http://www.reportlab.com/; ";
+      };
+    };
 
     my_schwifty = pkgs.python27.pkgs.buildPythonPackage rec {
       pname = "schwifty";
@@ -707,9 +738,9 @@ let
    #my_requests_oauthlib
     pkgs27=pkgs.python27Packages;
     #my_schwifty
-    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib my_pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
+    my_py_packages2=with pkgs.python27Packages; [ certifi urllib3 my_unidecode pbr my_twilio  chardet pycups phonenumbers  my_psycopg2 tabulate my_openupgradelib my_pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf2 pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy wheel unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch my_oauthlib ]++(my-apiclient pkgs27); 
     
-   my_py_packages3=with pkgs.python27Packages; [my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch]; #before v8
+   my_py_packages3=with pkgs.python27Packages; [my_psycopg2 tabulate my_openupgradelib pillow  ldap my_pywebdav my_vatnumber gdata Babel chardet decorator docutils feedparser gevent greenlet html2text my_jinja2  lxml Mako markupsafe mock  ofxparse passlib  psutil  pydot  pyparsing my_pypdf2 pyserial python-dateutil pytz pyusb qrcode my_reportlab requests suds-jurko vobject my_werkzeug xlwt xlrd simplejson pychart unittest2 pycountry numpy unicodecsv  matplotlib my_magento my_pyyaml311 my_openid setuptools my_helpscout  gspread  oauth2client toml my_odooutils pandas singledispatch]; #before v8
 
   mypython = pkgs.python27.buildEnv.override {
      extraLibs =  my_py_packages2;  
