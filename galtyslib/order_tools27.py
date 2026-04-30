@@ -671,7 +671,7 @@ def get_new_credit_note_number(cr,so):
         number = number_ +1
     return number
 
-def _prepare_xero_invoice(cr,so,itype, number, name):
+def _prepare_xero_invoice(cr,so,itype, number, name, proforma=False):
     
     #number = get_new_invoice_number(cr,so)
     ref = get_reference(so)
@@ -682,17 +682,15 @@ def _prepare_xero_invoice(cr,so,itype, number, name):
     else:
         inv_type = 'accrec'
         state = 'authorised'
-        
+    if proforma:
+        state='draft'
     #d_c = datetime.strptime(so.date_confirm, "%Y-%m-%d")
     #ts = so.date_confirm #datetime_to_xero_str_timestamp(d_c)
     
     today=date.today()
     d_c=date.strftime(today,DEFAULT_SERVER_DATE_FORMAT)
     
-    if so.pricelist_id.type == 'retail':
-        lat='inclusive'
-    else:
-        lat='exclusive'    
+    lat = so.line_amount_type
     inv={'sale_order_id':so.id,
          'date': d_c,
          'date_due':d_c,
