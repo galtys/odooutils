@@ -51,14 +51,13 @@
       migrated_pjb70 = pkgs9.python27.pkgs.buildPythonPackage rec {
         pname = "openerp-server";
         version = "1.1.1";
-        #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev c285b25954eac9e85e4fbdd35d916fd7b36ff925
+        #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev 3e3585371d5069b72c5b1e88667e04346deb52ae
+        # 2fa_v2: Google Authenticator (TOTP) as an alternative second factor
         src = pkgs9.fetchFromGitHub {
-            rev = "c285b25954eac9e85e4fbdd35d916fd7b36ff925";
-            #ref= "506fb6943205d7debc51b282d1412e6587bbeafd";
+            rev = "3e3585371d5069b72c5b1e88667e04346deb52ae";
             owner = "galtys";
             repo = "odoo";
-         	  sha256 = "1fsflsp1kd9k0k764agb503hb09nravf58cbk7wxnnii8zg8xsfd";
-            #sha256 = "0zhbk10swl6254qig5s70yjqf960h9inr0za3870s6xnilbc0k57";
+         	  sha256 = "1rf6s7j3w5pqgwxb71mfpjr83fh0vk0004gy9lg4r12chw6gfj38";
         };
         #src = /home/jan/github.com/migrated_pjb70;
         #postPatch = ''
