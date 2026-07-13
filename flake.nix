@@ -51,13 +51,13 @@
       migrated_pjb70 = pkgs9.python27.pkgs.buildPythonPackage rec {
         pname = "openerp-server";
         version = "1.1.1";
-        #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev 3e3585371d5069b72c5b1e88667e04346deb52ae
-        # 2fa_v2: Google Authenticator (TOTP) as an alternative second factor
+        #nix-prefetch-git --url https://github.com/galtys/odoo.git --rev 73373043e646d37159944880d49d9f6abf0f7034
+        # 2fa_v2: vendor Handsontable 14.4.0 locally (jsdelivr latest rolled to 18.x and broke Preorder Dates)
         src = pkgs9.fetchFromGitHub {
-            rev = "3e3585371d5069b72c5b1e88667e04346deb52ae";
+            rev = "73373043e646d37159944880d49d9f6abf0f7034";
             owner = "galtys";
             repo = "odoo";
-         	  sha256 = "1rf6s7j3w5pqgwxb71mfpjr83fh0vk0004gy9lg4r12chw6gfj38";
+         	  sha256 = "105b6s3pwbgi5qdg8vbkwmlz0wv9rvpai7ydh0yqngxhc7d1mr00";
         };
         #src = /home/jan/github.com/migrated_pjb70;
         #postPatch = ''
